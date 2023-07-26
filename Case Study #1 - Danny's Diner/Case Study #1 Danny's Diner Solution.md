@@ -1,4 +1,8 @@
 ## Case Study #1 - Danny's Diner Solution
+
+![1](https://github.com/therealyash/8-Week-SQL-Challenge/assets/114616305/f0d152ef-2485-4e00-b79a-b5caf395c36c)
+
+
 ### Each of the following case study questions can be answered using a single SQL statement:
 
 

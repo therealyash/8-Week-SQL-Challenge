@@ -1,0 +1,11 @@
+order_id,runner_id,pickup_time,distance,duration,cancellation
+1,1,1/1/2021 18:15,20km,32 minutes,
+2,1,1/1/2021 19:10,20km,27 minutes,
+3,1,1/3/2021 0:12,13.4km,20 mins,NaN
+4,2,1/4/2021 13:53,23.4,40,NaN
+5,3,1/8/2021 21:10,10,15,NaN
+6,3,null,null,null,Restaurant Cancellation
+7,2,1/8/2020 21:30,25km,25mins,null
+8,2,1/10/2020 0:15,23.4 km,15 minute,null
+9,2,null,null,null,Customer Cancellation
+10,1,1/11/2020 18:50,10km,10minutes,null

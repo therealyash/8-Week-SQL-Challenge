@@ -59,3 +59,11 @@ ON CHAR_LENGTH(toppings)
 ```
 SELECT * FROM expanded_toppings;
 ```
+
+# Runner Orders
+
+```
+UPDATE runner_orders
+SET cancellation = NULL
+WHERE cancellation = 'Nan'
+```

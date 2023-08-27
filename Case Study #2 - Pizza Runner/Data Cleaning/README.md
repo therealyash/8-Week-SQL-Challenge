@@ -19,7 +19,43 @@ SELECT order_id,
        order_time
 FROM customer_orders;
 ```
+# Converting order_time to DateTime
 
+### Try using the STR_TO_DATE function to convert the order_time column to a date column. Use a duplicate to avoid losing the data.
+
+```
+UPDATE customer_orders
+SET order_date_time = STR_TO_DATE(order_time, '%d-%m-%Y')
+```
+
+Unfortunately this didn't work properly for some reason.Then I created 2 columns order_datetime & order_timing which would contain substring of order_time with date and time respectively.
+
+```
+// Date column
+ALTER TABLE customer_orders
+ADD COLUMN order_datetime VARCHAR(25);
+
+// Time column
+ALTER TABLE customer_orders
+ADD COLUMN order_timing VARCHAR(25);
+
+// Date time column
+ALTER TABLE customer_orders
+ADD COLUMN order_date_time DATETIME;
+
+// Create a date substring
+UPDATE customer_orders 
+SET order_timing = SUBSTRING(order_time, 1,10);
+
+// Create a time substring
+UPDATE customer_orders 
+SET order_timing = SUBSTRING(order_time, 12,16);
+
+// Merge both the columns together
+UPDATE customer_orders
+SET order_date_time = STR_TO_DATE(CONCAT(order_datetime, ' ', order_timing), '%Y-%m-%d %H:%i:%s');
+
+```
 
 
 # Pizza Recipe

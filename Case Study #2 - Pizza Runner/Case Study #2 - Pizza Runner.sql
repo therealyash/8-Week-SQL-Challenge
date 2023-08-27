@@ -70,9 +70,40 @@ ORDER BY customer_id;
 
 -- How many pizzas were delivered that had both exclusions and extras?
 
+***
+SELECT customer_id,
+       SUM(CASE
+               WHEN (exclusions IS NOT NULL
+                     AND extras IS NOT NULL) THEN 1
+               ELSE 0
+           END) AS both_extra_and_exclusion
+FROM customer_orders
+INNER JOIN runner_orders USING (order_id)
+WHERE cancellation IS NULL
+GROUP BY 1
+ORDER BY 1;
+
 -- What was the total volume of pizzas ordered for each hour of the day?
+
+SELECT hour(order_date_time) AS 'Hour',
+       COUNT(order_time) AS 'No. of pizzas ordered',
+       ROUND(100*COUNT(order_id) / SUM(COUNT(order_id)) OVER(), 2) AS 'Volume of Pizzas Ordered'
+FROM customer_orders
+GROUP BY 1
+ORDER BY 1;   
 
 -- What was the volume of orders for each day of the week?
 
 
+SELECT DAYNAME(order_datetime) AS 'Day Of Week',
+       count(order_id) AS 'Number of pizzas ordered',
+       round(100*count(order_id) /sum(count(order_id)) over(), 2) AS 'Volume of pizzas ordered'
+FROM customer_orders
+GROUP BY 1
+ORDER BY 2 DESC;
 
+
+SELECT DAYNAME(order_date_time), DAYOFWEEK(order_date_time), day(order_date_time), order_date_time
+FROM customer_orders;
+
+select * FROM customer_orders;

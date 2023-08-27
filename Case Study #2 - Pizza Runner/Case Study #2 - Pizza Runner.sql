@@ -102,8 +102,3 @@ FROM customer_orders
 GROUP BY 1
 ORDER BY 2 DESC;
 
-
-SELECT DAYNAME(order_date_time), DAYOFWEEK(order_date_time), day(order_date_time), order_date_time
-FROM customer_orders;
-
-select * FROM customer_orders;
